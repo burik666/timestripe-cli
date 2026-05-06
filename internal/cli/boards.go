@@ -73,7 +73,7 @@ func newBoardsListCmd() *cobra.Command {
 	cmd.Flags().StringVar(&spaceID, "space-id", "", "filter by space ID")
 	cmd.Flags().StringVar(&search, "search", "", "case-insensitive search over name")
 	cmd.Flags().BoolVar(&archived, "archived", false, "filter by archived state")
-	cmd.Flags().StringVar(&sort, "sort", "", "sort order; prefix with - for descending (e.g. -sequenceNo)")
+	cmd.Flags().StringVar(&sort, "sort", "", "sort order; prefix with - for descending (e.g. -sequence_no)")
 	return cmd
 }
 
@@ -126,13 +126,13 @@ func (f *boardFields) build(cmd *cobra.Command, client *api.ClientWithResponses)
 	ifChanged(cmd, "background", "background", f.background, body)
 	ifChanged(cmd, "layout", "layout", f.layout, body)
 	ifChanged(cmd, "archived", "archived", f.archived, body)
-	ifChanged(cmd, "sequence-no", "sequenceNo", f.sequenceNo, body)
+	ifChanged(cmd, "sequence-no", "sequence_no", f.sequenceNo, body)
 	if cmd.Flags().Changed("space") {
 		id, err := resolveSpaceRef(cmd.Context(), client, f.spaceRef)
 		if err != nil {
 			return nil, err
 		}
-		body["spaceId"] = id
+		body["space_id"] = id
 	}
 	return body, nil
 }

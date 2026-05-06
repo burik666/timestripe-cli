@@ -70,7 +70,7 @@ func newBucketsListCmd() *cobra.Command {
 	addListFlags(cmd, &f)
 	cmd.Flags().StringVar(&boardID, "board-id", "", "filter by board ID")
 	cmd.Flags().StringVar(&search, "search", "", "case-insensitive search over name")
-	cmd.Flags().StringVar(&sort, "sort", "", "sort order; prefix with - for descending (e.g. -sequenceNo)")
+	cmd.Flags().StringVar(&sort, "sort", "", "sort order; prefix with - for descending (e.g. -sequence_no)")
 	return cmd
 }
 
@@ -120,14 +120,14 @@ func (f *bucketFields) build(cmd *cobra.Command, client *api.ClientWithResponses
 	ifChanged(cmd, "name", "name", f.name, body)
 	ifChanged(cmd, "emoji", "emoji", f.emoji, body)
 	ifChanged(cmd, "expanded", "expanded", f.expanded, body)
-	ifChanged(cmd, "show-emoji", "showEmoji", f.showEmoji, body)
-	ifChanged(cmd, "sequence-no", "sequenceNo", f.sequenceNo, body)
+	ifChanged(cmd, "show-emoji", "show_emoji", f.showEmoji, body)
+	ifChanged(cmd, "sequence-no", "sequence_no", f.sequenceNo, body)
 	if cmd.Flags().Changed("board") {
 		id, err := resolveBoardRef(cmd.Context(), client, f.boardRef)
 		if err != nil {
 			return nil, err
 		}
-		body["boardId"] = id
+		body["board_id"] = id
 	}
 	return body, nil
 }

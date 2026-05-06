@@ -74,7 +74,7 @@ func newFoldersListCmd() *cobra.Command {
 	cmd.Flags().StringVar(&spaceID, "space-id", "", "filter by space ID")
 	cmd.Flags().StringVar(&userID, "user-id", "", "filter by owning user ID (pass \"null\" for shared folders)")
 	cmd.Flags().BoolVar(&isPrivate, "is-private", false, "filter by private state")
-	cmd.Flags().StringVar(&sortF, "sort", "", "sort order; prefix with - for descending (e.g. -sequenceNo)")
+	cmd.Flags().StringVar(&sortF, "sort", "", "sort order; prefix with - for descending (e.g. -sequence_no)")
 	return cmd
 }
 
@@ -120,14 +120,14 @@ func (f *folderFields) build(cmd *cobra.Command, client *api.ClientWithResponses
 		return nil, err
 	}
 	ifChanged(cmd, "name", "name", f.name, body)
-	ifChanged(cmd, "sequence-no", "sequenceNo", f.sequenceNo, body)
-	ifChanged(cmd, "is-private", "isPrivate", f.isPrivate, body)
+	ifChanged(cmd, "sequence-no", "sequence_no", f.sequenceNo, body)
+	ifChanged(cmd, "is-private", "is_private", f.isPrivate, body)
 	if cmd.Flags().Changed("space") {
 		id, err := resolveSpaceRef(cmd.Context(), client, f.spaceRef)
 		if err != nil {
 			return nil, err
 		}
-		body["spaceId"] = id
+		body["space_id"] = id
 	}
 	return body, nil
 }
@@ -300,7 +300,7 @@ func newFolderGoalsListCmd() *cobra.Command {
 	addListFlags(cmd, &f)
 	cmd.Flags().StringVar(&folderID, "folder-id", "", "filter by folder ID")
 	cmd.Flags().StringVar(&goalID, "goal-id", "", "filter by goal ID")
-	cmd.Flags().StringVar(&sortF, "sort", "", "sort order; prefix with - for descending (e.g. -sequenceNo)")
+	cmd.Flags().StringVar(&sortF, "sort", "", "sort order; prefix with - for descending (e.g. -sequence_no)")
 	return cmd
 }
 
@@ -343,20 +343,20 @@ func (f *folderGoalFields) build(cmd *cobra.Command, client *api.ClientWithRespo
 	if err != nil {
 		return nil, err
 	}
-	ifChanged(cmd, "sequence-no", "sequenceNo", f.sequenceNo, body)
+	ifChanged(cmd, "sequence-no", "sequence_no", f.sequenceNo, body)
 	if cmd.Flags().Changed("folder") {
 		id, err := resolveFolderRef(cmd.Context(), client, f.folderRef)
 		if err != nil {
 			return nil, err
 		}
-		body["folderId"] = id
+		body["folder_id"] = id
 	}
 	if cmd.Flags().Changed("goal") {
 		id, err := resolveGoalRef(cmd.Context(), client, f.goalRef)
 		if err != nil {
 			return nil, err
 		}
-		body["goalId"] = id
+		body["goal_id"] = id
 	}
 	return body, nil
 }

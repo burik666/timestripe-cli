@@ -132,27 +132,27 @@ const (
 	BoardsListParamsSortArchived        BoardsListParamsSort = "archived"
 	BoardsListParamsSortMinusArchived   BoardsListParamsSort = "-archived"
 	BoardsListParamsSortMinusName       BoardsListParamsSort = "-name"
-	BoardsListParamsSortMinusSequenceNo BoardsListParamsSort = "-sequenceNo"
+	BoardsListParamsSortMinusSequenceNo BoardsListParamsSort = "-sequence_no"
 	BoardsListParamsSortName            BoardsListParamsSort = "name"
-	BoardsListParamsSortSequenceNo      BoardsListParamsSort = "sequenceNo"
+	BoardsListParamsSortSequenceNo      BoardsListParamsSort = "sequence_no"
 )
 
 // Defines values for BucketsListParamsSort.
 const (
-	BucketsListParamsSortCreatedDatetime      BucketsListParamsSort = "createdDatetime"
-	BucketsListParamsSortMinusCreatedDatetime BucketsListParamsSort = "-createdDatetime"
+	BucketsListParamsSortCreatedDatetime      BucketsListParamsSort = "created_datetime"
+	BucketsListParamsSortMinusCreatedDatetime BucketsListParamsSort = "-created_datetime"
 	BucketsListParamsSortMinusName            BucketsListParamsSort = "-name"
-	BucketsListParamsSortMinusSequenceNo      BucketsListParamsSort = "-sequenceNo"
+	BucketsListParamsSortMinusSequenceNo      BucketsListParamsSort = "-sequence_no"
 	BucketsListParamsSortName                 BucketsListParamsSort = "name"
-	BucketsListParamsSortSequenceNo           BucketsListParamsSort = "sequenceNo"
+	BucketsListParamsSortSequenceNo           BucketsListParamsSort = "sequence_no"
 )
 
 // Defines values for CommentsListParamsSort.
 const (
-	CommentsListParamsSortCreatedDatetime       CommentsListParamsSort = "createdDatetime"
-	CommentsListParamsSortMinusCreatedDatetime  CommentsListParamsSort = "-createdDatetime"
-	CommentsListParamsSortMinusModifiedDatetime CommentsListParamsSort = "-modifiedDatetime"
-	CommentsListParamsSortModifiedDatetime      CommentsListParamsSort = "modifiedDatetime"
+	CommentsListParamsSortCreatedDatetime       CommentsListParamsSort = "created_datetime"
+	CommentsListParamsSortMinusCreatedDatetime  CommentsListParamsSort = "-created_datetime"
+	CommentsListParamsSortMinusModifiedDatetime CommentsListParamsSort = "-modified_datetime"
+	CommentsListParamsSortModifiedDatetime      CommentsListParamsSort = "modified_datetime"
 )
 
 // Defines values for EventsListParamsSort.
@@ -191,20 +191,20 @@ const (
 
 // Defines values for FolderGoalsListParamsSort.
 const (
-	FolderGoalsListParamsSortCreatedDatetime      FolderGoalsListParamsSort = "createdDatetime"
-	FolderGoalsListParamsSortMinusCreatedDatetime FolderGoalsListParamsSort = "-createdDatetime"
-	FolderGoalsListParamsSortMinusSequenceNo      FolderGoalsListParamsSort = "-sequenceNo"
-	FolderGoalsListParamsSortSequenceNo           FolderGoalsListParamsSort = "sequenceNo"
+	FolderGoalsListParamsSortCreatedDatetime      FolderGoalsListParamsSort = "created_datetime"
+	FolderGoalsListParamsSortMinusCreatedDatetime FolderGoalsListParamsSort = "-created_datetime"
+	FolderGoalsListParamsSortMinusSequenceNo      FolderGoalsListParamsSort = "-sequence_no"
+	FolderGoalsListParamsSortSequenceNo           FolderGoalsListParamsSort = "sequence_no"
 )
 
 // Defines values for FoldersListParamsSort.
 const (
-	FoldersListParamsSortCreatedDatetime      FoldersListParamsSort = "createdDatetime"
-	FoldersListParamsSortMinusCreatedDatetime FoldersListParamsSort = "-createdDatetime"
+	FoldersListParamsSortCreatedDatetime      FoldersListParamsSort = "created_datetime"
+	FoldersListParamsSortMinusCreatedDatetime FoldersListParamsSort = "-created_datetime"
 	FoldersListParamsSortMinusName            FoldersListParamsSort = "-name"
-	FoldersListParamsSortMinusSequenceNo      FoldersListParamsSort = "-sequenceNo"
+	FoldersListParamsSortMinusSequenceNo      FoldersListParamsSort = "-sequence_no"
 	FoldersListParamsSortName                 FoldersListParamsSort = "name"
-	FoldersListParamsSortSequenceNo           FoldersListParamsSort = "sequenceNo"
+	FoldersListParamsSortSequenceNo           FoldersListParamsSort = "sequence_no"
 )
 
 // Defines values for GoalsListParamsColor.
@@ -232,17 +232,17 @@ const (
 const (
 	GoalsListParamsSortAssignee              GoalsListParamsSort = "assignee"
 	GoalsListParamsSortChecked               GoalsListParamsSort = "checked"
-	GoalsListParamsSortCreatedDatetime       GoalsListParamsSort = "createdDatetime"
+	GoalsListParamsSortCreatedDatetime       GoalsListParamsSort = "created_datetime"
 	GoalsListParamsSortDate                  GoalsListParamsSort = "date"
 	GoalsListParamsSortHorizon               GoalsListParamsSort = "horizon"
 	GoalsListParamsSortMinusAssignee         GoalsListParamsSort = "-assignee"
 	GoalsListParamsSortMinusChecked          GoalsListParamsSort = "-checked"
-	GoalsListParamsSortMinusCreatedDatetime  GoalsListParamsSort = "-createdDatetime"
+	GoalsListParamsSortMinusCreatedDatetime  GoalsListParamsSort = "-created_datetime"
 	GoalsListParamsSortMinusDate             GoalsListParamsSort = "-date"
 	GoalsListParamsSortMinusHorizon          GoalsListParamsSort = "-horizon"
-	GoalsListParamsSortMinusModifiedDatetime GoalsListParamsSort = "-modifiedDatetime"
+	GoalsListParamsSortMinusModifiedDatetime GoalsListParamsSort = "-modified_datetime"
 	GoalsListParamsSortMinusName             GoalsListParamsSort = "-name"
-	GoalsListParamsSortModifiedDatetime      GoalsListParamsSort = "modifiedDatetime"
+	GoalsListParamsSortModifiedDatetime      GoalsListParamsSort = "modified_datetime"
 	GoalsListParamsSortName                  GoalsListParamsSort = "name"
 )
 
@@ -250,7 +250,7 @@ const (
 type Board struct {
 	Archived        *bool      `json:"archived,omitempty"`
 	Background      *string    `json:"background"`
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 
 	// Description Markdown-formatted text.
 	Description *string `json:"description,omitempty"`
@@ -260,8 +260,8 @@ type Board struct {
 	// * `vertical` - vertical
 	Layout     *BoardLayout `json:"layout"`
 	Name       *string      `json:"name,omitempty"`
-	SequenceNo *int         `json:"sequenceNo,omitempty"`
-	SpaceId    string       `json:"spaceId"`
+	SequenceNo *int         `json:"sequence_no,omitempty"`
+	SpaceId    string       `json:"space_id"`
 	Url        *string      `json:"url,omitempty"`
 }
 
@@ -271,46 +271,46 @@ type BoardLayout string
 
 // Bucket defines model for Bucket.
 type Bucket struct {
-	BoardId         string     `json:"boardId"`
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	BoardId         string     `json:"board_id"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 	Emoji           *string    `json:"emoji,omitempty"`
 	Expanded        *bool      `json:"expanded,omitempty"`
 	Id              *string    `json:"id,omitempty"`
 	Name            *string    `json:"name,omitempty"`
-	SequenceNo      *int       `json:"sequenceNo,omitempty"`
-	ShowEmoji       *bool      `json:"showEmoji,omitempty"`
+	SequenceNo      *int       `json:"sequence_no,omitempty"`
+	ShowEmoji       *bool      `json:"show_emoji,omitempty"`
 	Url             *string    `json:"url,omitempty"`
 }
 
 // Comment defines model for Comment.
 type Comment struct {
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 
 	// Description Markdown-formatted text.
 	Description      string     `json:"description"`
-	GoalId           string     `json:"goalId"`
+	GoalId           string     `json:"goal_id"`
 	Id               *string    `json:"id,omitempty"`
-	ModifiedDatetime *time.Time `json:"modifiedDatetime,omitempty"`
+	ModifiedDatetime *time.Time `json:"modified_datetime,omitempty"`
 	Url              *string    `json:"url,omitempty"`
-	UserId           *string    `json:"userId,omitempty"`
+	UserId           *string    `json:"user_id,omitempty"`
 }
 
 // Event defines model for Event.
 type Event struct {
-	BoardId       *string    `json:"boardId,omitempty"`
-	BoardName     *string    `json:"boardName"`
-	BucketId      *string    `json:"bucketId,omitempty"`
-	BucketName    *string    `json:"bucketName"`
-	CommentId     *string    `json:"commentId,omitempty"`
+	BoardId       *string    `json:"board_id,omitempty"`
+	BoardName     *string    `json:"board_name"`
+	BucketId      *string    `json:"bucket_id,omitempty"`
+	BucketName    *string    `json:"bucket_name"`
+	CommentId     *string    `json:"comment_id,omitempty"`
 	Datetime      *time.Time `json:"datetime,omitempty"`
-	GoalColor     *string    `json:"goalColor,omitempty"`
-	GoalId        *string    `json:"goalId,omitempty"`
-	GoalName      *string    `json:"goalName,omitempty"`
+	GoalColor     *string    `json:"goal_color,omitempty"`
+	GoalId        *string    `json:"goal_id,omitempty"`
+	GoalName      *string    `json:"goal_name,omitempty"`
 	Id            *string    `json:"id,omitempty"`
-	OtherUserId   *string    `json:"otherUserId,omitempty"`
-	OtherUserName *string    `json:"otherUserName"`
-	SpaceId       *string    `json:"spaceId,omitempty"`
-	SpaceName     *string    `json:"spaceName"`
+	OtherUserId   *string    `json:"other_user_id,omitempty"`
+	OtherUserName *string    `json:"other_user_name"`
+	SpaceId       *string    `json:"space_id,omitempty"`
+	SpaceName     *string    `json:"space_name"`
 
 	// Type * `GOAL_CREATED` - Goal Created
 	// * `GOAL_DELETED` - Goal Deleted
@@ -337,8 +337,8 @@ type Event struct {
 	// * `CLIMB_SUBSCRIPTION_CREATED` - Climb Subscription Created
 	// * `CLIMB_SUBSCRIPTION_DELETED` - Climb Subscription Deleted
 	Type     EventType `json:"type"`
-	UserId   *string   `json:"userId,omitempty"`
-	UserName *string   `json:"userName"`
+	UserId   *string   `json:"user_id,omitempty"`
+	UserName *string   `json:"user_name"`
 }
 
 // EventType * `GOAL_CREATED` - Goal Created
@@ -369,28 +369,28 @@ type EventType string
 
 // Folder defines model for Folder.
 type Folder struct {
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 	Id              *string    `json:"id,omitempty"`
-	IsPrivate       *bool      `json:"isPrivate,omitempty"`
+	IsPrivate       *bool      `json:"is_private,omitempty"`
 	Name            *string    `json:"name,omitempty"`
-	SequenceNo      *int       `json:"sequenceNo,omitempty"`
-	SpaceId         string     `json:"spaceId"`
-	UserId          *string    `json:"userId"`
+	SequenceNo      *int       `json:"sequence_no,omitempty"`
+	SpaceId         string     `json:"space_id"`
+	UserId          *string    `json:"user_id"`
 }
 
 // FolderGoal defines model for FolderGoal.
 type FolderGoal struct {
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
-	FolderId        string     `json:"folderId"`
-	GoalId          string     `json:"goalId"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
+	FolderId        string     `json:"folder_id"`
+	GoalId          string     `json:"goal_id"`
 	Id              *string    `json:"id,omitempty"`
-	SequenceNo      *int       `json:"sequenceNo,omitempty"`
+	SequenceNo      *int       `json:"sequence_no,omitempty"`
 }
 
 // Goal defines model for Goal.
 type Goal struct {
-	AssigneeId *string `json:"assigneeId"`
-	BucketId   *string `json:"bucketId"`
+	AssigneeId *string `json:"assignee_id"`
+	BucketId   *string `json:"bucket_id"`
 	Checked    *bool   `json:"checked,omitempty"`
 
 	// Color * `#ecce32` - #ecce32
@@ -400,7 +400,7 @@ type Goal struct {
 	// * `#955be0` - #955be0
 	// * `#f2713a` - #f2713a
 	Color           *GoalColor `json:"color"`
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 
 	// Date ISO 8601 date (YYYY-MM-DD).
 	Date *openapi_types.Date `json:"date"`
@@ -409,7 +409,7 @@ type Goal struct {
 	Description *string `json:"description,omitempty"`
 
 	// EndTime Time in 24-hour HH:MM format.
-	EndTime *string `json:"endTime"`
+	EndTime *string `json:"end_time"`
 
 	// Horizon * `day` - day
 	// * `week` - week
@@ -421,11 +421,11 @@ type Goal struct {
 	Horizon  *GoalHorizon `json:"horizon"`
 	Id       *string      `json:"id,omitempty"`
 	Name     *string      `json:"name,omitempty"`
-	ParentId *string      `json:"parentId"`
-	SpaceId  string       `json:"spaceId"`
+	ParentId *string      `json:"parent_id"`
+	SpaceId  string       `json:"space_id"`
 
 	// StartTime Time in 24-hour HH:MM format.
-	StartTime *string `json:"startTime"`
+	StartTime *string `json:"start_time"`
 	Url       *string `json:"url,omitempty"`
 }
 
@@ -473,8 +473,8 @@ type Membership struct {
 	// * `EDITOR` - Editor
 	// * `VIEWER` - Viewer
 	Role    *MembershipRole `json:"role,omitempty"`
-	SpaceId *string         `json:"spaceId,omitempty"`
-	UserId  *string         `json:"userId,omitempty"`
+	SpaceId *string         `json:"space_id,omitempty"`
+	UserId  *string         `json:"user_id,omitempty"`
 }
 
 // MembershipRole * `OWNER` - Owner
@@ -567,7 +567,7 @@ type PaginatedUserList struct {
 type PatchedBoard struct {
 	Archived        *bool      `json:"archived,omitempty"`
 	Background      *string    `json:"background"`
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 
 	// Description Markdown-formatted text.
 	Description *string `json:"description,omitempty"`
@@ -577,8 +577,8 @@ type PatchedBoard struct {
 	// * `vertical` - vertical
 	Layout     *PatchedBoardLayout `json:"layout"`
 	Name       *string             `json:"name,omitempty"`
-	SequenceNo *int                `json:"sequenceNo,omitempty"`
-	SpaceId    *string             `json:"spaceId,omitempty"`
+	SequenceNo *int                `json:"sequence_no,omitempty"`
+	SpaceId    *string             `json:"space_id,omitempty"`
 	Url        *string             `json:"url,omitempty"`
 }
 
@@ -588,54 +588,54 @@ type PatchedBoardLayout string
 
 // PatchedBucket defines model for PatchedBucket.
 type PatchedBucket struct {
-	BoardId         *string    `json:"boardId,omitempty"`
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	BoardId         *string    `json:"board_id,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 	Emoji           *string    `json:"emoji,omitempty"`
 	Expanded        *bool      `json:"expanded,omitempty"`
 	Id              *string    `json:"id,omitempty"`
 	Name            *string    `json:"name,omitempty"`
-	SequenceNo      *int       `json:"sequenceNo,omitempty"`
-	ShowEmoji       *bool      `json:"showEmoji,omitempty"`
+	SequenceNo      *int       `json:"sequence_no,omitempty"`
+	ShowEmoji       *bool      `json:"show_emoji,omitempty"`
 	Url             *string    `json:"url,omitempty"`
 }
 
 // PatchedComment defines model for PatchedComment.
 type PatchedComment struct {
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 
 	// Description Markdown-formatted text.
 	Description      *string    `json:"description,omitempty"`
-	GoalId           *string    `json:"goalId,omitempty"`
+	GoalId           *string    `json:"goal_id,omitempty"`
 	Id               *string    `json:"id,omitempty"`
-	ModifiedDatetime *time.Time `json:"modifiedDatetime,omitempty"`
+	ModifiedDatetime *time.Time `json:"modified_datetime,omitempty"`
 	Url              *string    `json:"url,omitempty"`
-	UserId           *string    `json:"userId,omitempty"`
+	UserId           *string    `json:"user_id,omitempty"`
 }
 
 // PatchedFolder defines model for PatchedFolder.
 type PatchedFolder struct {
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
 	Id              *string    `json:"id,omitempty"`
-	IsPrivate       *bool      `json:"isPrivate,omitempty"`
+	IsPrivate       *bool      `json:"is_private,omitempty"`
 	Name            *string    `json:"name,omitempty"`
-	SequenceNo      *int       `json:"sequenceNo,omitempty"`
-	SpaceId         *string    `json:"spaceId,omitempty"`
-	UserId          *string    `json:"userId"`
+	SequenceNo      *int       `json:"sequence_no,omitempty"`
+	SpaceId         *string    `json:"space_id,omitempty"`
+	UserId          *string    `json:"user_id"`
 }
 
 // PatchedFolderGoal defines model for PatchedFolderGoal.
 type PatchedFolderGoal struct {
-	CreatedDatetime *time.Time `json:"createdDatetime,omitempty"`
-	FolderId        *string    `json:"folderId,omitempty"`
-	GoalId          *string    `json:"goalId,omitempty"`
+	CreatedDatetime *time.Time `json:"created_datetime,omitempty"`
+	FolderId        *string    `json:"folder_id,omitempty"`
+	GoalId          *string    `json:"goal_id,omitempty"`
 	Id              *string    `json:"id,omitempty"`
-	SequenceNo      *int       `json:"sequenceNo,omitempty"`
+	SequenceNo      *int       `json:"sequence_no,omitempty"`
 }
 
 // PatchedGoal defines model for PatchedGoal.
 type PatchedGoal struct {
-	AssigneeId *string `json:"assigneeId"`
-	BucketId   *string `json:"bucketId"`
+	AssigneeId *string `json:"assignee_id"`
+	BucketId   *string `json:"bucket_id"`
 	Checked    *bool   `json:"checked,omitempty"`
 
 	// Color * `#ecce32` - #ecce32
@@ -645,7 +645,7 @@ type PatchedGoal struct {
 	// * `#955be0` - #955be0
 	// * `#f2713a` - #f2713a
 	Color           *PatchedGoalColor `json:"color"`
-	CreatedDatetime *time.Time        `json:"createdDatetime,omitempty"`
+	CreatedDatetime *time.Time        `json:"created_datetime,omitempty"`
 
 	// Date ISO 8601 date (YYYY-MM-DD).
 	Date *openapi_types.Date `json:"date"`
@@ -654,7 +654,7 @@ type PatchedGoal struct {
 	Description *string `json:"description,omitempty"`
 
 	// EndTime Time in 24-hour HH:MM format.
-	EndTime *string `json:"endTime"`
+	EndTime *string `json:"end_time"`
 
 	// Horizon * `day` - day
 	// * `week` - week
@@ -666,11 +666,11 @@ type PatchedGoal struct {
 	Horizon  *PatchedGoalHorizon `json:"horizon"`
 	Id       *string             `json:"id,omitempty"`
 	Name     *string             `json:"name,omitempty"`
-	ParentId *string             `json:"parentId"`
-	SpaceId  *string             `json:"spaceId,omitempty"`
+	ParentId *string             `json:"parent_id"`
+	SpaceId  *string             `json:"space_id,omitempty"`
 
 	// StartTime Time in 24-hour HH:MM format.
-	StartTime *string `json:"startTime"`
+	StartTime *string `json:"start_time"`
 	Url       *string `json:"url,omitempty"`
 }
 
@@ -695,7 +695,7 @@ type PatchedGoalHorizon string
 type PatchedSpace struct {
 	Id         *string      `json:"id,omitempty"`
 	Image      *string      `json:"image,omitempty"`
-	MagicLinks *[]MagicLink `json:"magicLinks,omitempty"`
+	MagicLinks *[]MagicLink `json:"magic_links,omitempty"`
 	Name       *string      `json:"name,omitempty"`
 	Url        *string      `json:"url,omitempty"`
 }
@@ -704,7 +704,7 @@ type PatchedSpace struct {
 type Space struct {
 	Id         *string      `json:"id,omitempty"`
 	Image      *string      `json:"image,omitempty"`
-	MagicLinks *[]MagicLink `json:"magicLinks,omitempty"`
+	MagicLinks *[]MagicLink `json:"magic_links,omitempty"`
 	Name       *string      `json:"name,omitempty"`
 	Url        *string      `json:"url,omitempty"`
 }
@@ -712,10 +712,10 @@ type Space struct {
 // User defines model for User.
 type User struct {
 	Email     *string `json:"email,omitempty"`
-	FirstName *string `json:"firstName,omitempty"`
+	FirstName *string `json:"first_name,omitempty"`
 	Id        *string `json:"id,omitempty"`
 	Image     *string `json:"image"`
-	LastName  *string `json:"lastName,omitempty"`
+	LastName  *string `json:"last_name,omitempty"`
 	Timezone  *string `json:"timezone"`
 	Url       *string `json:"url,omitempty"`
 }
@@ -734,11 +734,11 @@ type BoardsListParams struct {
 	// Search Case-insensitive token search over: name.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
-	// Sort Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+	// Sort Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
 	Sort *BoardsListParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// SpaceId Filter by space code.
-	SpaceId *string `form:"spaceId,omitempty" json:"spaceId,omitempty"`
+	SpaceId *string `form:"space_id,omitempty" json:"space_id,omitempty"`
 }
 
 // BoardsListParamsSort defines parameters for BoardsList.
@@ -747,7 +747,7 @@ type BoardsListParamsSort string
 // BucketsListParams defines parameters for BucketsList.
 type BucketsListParams struct {
 	// BoardId Filter by board code.
-	BoardId *string `form:"boardId,omitempty" json:"boardId,omitempty"`
+	BoardId *string `form:"board_id,omitempty" json:"board_id,omitempty"`
 
 	// Limit Number of results to return per page.
 	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
@@ -758,7 +758,7 @@ type BucketsListParams struct {
 	// Search Case-insensitive token search over: name.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
-	// Sort Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+	// Sort Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
 	Sort *BucketsListParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 }
 
@@ -768,34 +768,34 @@ type BucketsListParamsSort string
 // CommentsListParams defines parameters for CommentsList.
 type CommentsListParams struct {
 	// CreatedFrom Inclusive lower bound (>=) on created_datetime. ISO 8601 datetime.
-	CreatedFrom *time.Time `form:"createdFrom,omitempty" json:"createdFrom,omitempty"`
+	CreatedFrom *time.Time `form:"created_from,omitempty" json:"created_from,omitempty"`
 
 	// CreatedTo Exclusive upper bound (<) on created_datetime. ISO 8601 datetime.
-	CreatedTo *time.Time `form:"createdTo,omitempty" json:"createdTo,omitempty"`
+	CreatedTo *time.Time `form:"created_to,omitempty" json:"created_to,omitempty"`
 
 	// GoalId Filter by goal code.
-	GoalId *string `form:"goalId,omitempty" json:"goalId,omitempty"`
+	GoalId *string `form:"goal_id,omitempty" json:"goal_id,omitempty"`
 
 	// Limit Number of results to return per page.
 	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
 
 	// ModifiedFrom Inclusive lower bound (>=) on modified_datetime. ISO 8601 datetime.
-	ModifiedFrom *time.Time `form:"modifiedFrom,omitempty" json:"modifiedFrom,omitempty"`
+	ModifiedFrom *time.Time `form:"modified_from,omitempty" json:"modified_from,omitempty"`
 
 	// ModifiedTo Exclusive upper bound (<) on modified_datetime. ISO 8601 datetime.
-	ModifiedTo *time.Time `form:"modifiedTo,omitempty" json:"modifiedTo,omitempty"`
+	ModifiedTo *time.Time `form:"modified_to,omitempty" json:"modified_to,omitempty"`
 
 	// Offset The initial index from which to return the results.
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
 
-	// Sort Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+	// Sort Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
 	Sort *CommentsListParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// SpaceId Filter by goal__space code.
-	SpaceId *string `form:"spaceId,omitempty" json:"spaceId,omitempty"`
+	SpaceId *string `form:"space_id,omitempty" json:"space_id,omitempty"`
 
 	// UserId Filter by user code.
-	UserId *string `form:"userId,omitempty" json:"userId,omitempty"`
+	UserId *string `form:"user_id,omitempty" json:"user_id,omitempty"`
 }
 
 // CommentsListParamsSort defines parameters for CommentsList.
@@ -807,7 +807,7 @@ type EventsListParams struct {
 	From *time.Time `form:"from,omitempty" json:"from,omitempty"`
 
 	// GoalId Filter by goal code.
-	GoalId *string `form:"goalId,omitempty" json:"goalId,omitempty"`
+	GoalId *string `form:"goal_id,omitempty" json:"goal_id,omitempty"`
 
 	// Limit Number of results to return per page.
 	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
@@ -815,11 +815,11 @@ type EventsListParams struct {
 	// Offset The initial index from which to return the results.
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
 
-	// Sort Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+	// Sort Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
 	Sort *EventsListParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// SpaceId Filter by space code.
-	SpaceId *string `form:"spaceId,omitempty" json:"spaceId,omitempty"`
+	SpaceId *string `form:"space_id,omitempty" json:"space_id,omitempty"`
 
 	// To Exclusive upper bound (<) on datetime. ISO 8601 datetime.
 	To *time.Time `form:"to,omitempty" json:"to,omitempty"`
@@ -828,7 +828,7 @@ type EventsListParams struct {
 	Type *EventsListParamsType `form:"type,omitempty" json:"type,omitempty"`
 
 	// UserId Filter by user code.
-	UserId *string `form:"userId,omitempty" json:"userId,omitempty"`
+	UserId *string `form:"user_id,omitempty" json:"user_id,omitempty"`
 }
 
 // EventsListParamsSort defines parameters for EventsList.
@@ -840,10 +840,10 @@ type EventsListParamsType string
 // FolderGoalsListParams defines parameters for FolderGoalsList.
 type FolderGoalsListParams struct {
 	// FolderId Filter by folder code.
-	FolderId *string `form:"folderId,omitempty" json:"folderId,omitempty"`
+	FolderId *string `form:"folder_id,omitempty" json:"folder_id,omitempty"`
 
 	// GoalId Filter by goal code.
-	GoalId *string `form:"goalId,omitempty" json:"goalId,omitempty"`
+	GoalId *string `form:"goal_id,omitempty" json:"goal_id,omitempty"`
 
 	// Limit Number of results to return per page.
 	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
@@ -851,7 +851,7 @@ type FolderGoalsListParams struct {
 	// Offset The initial index from which to return the results.
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
 
-	// Sort Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+	// Sort Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
 	Sort *FolderGoalsListParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 }
 
@@ -861,7 +861,7 @@ type FolderGoalsListParamsSort string
 // FoldersListParams defines parameters for FoldersList.
 type FoldersListParams struct {
 	// IsPrivate Filter by is_private. Accepts `true` or `false`.
-	IsPrivate *bool `form:"isPrivate,omitempty" json:"isPrivate,omitempty"`
+	IsPrivate *bool `form:"is_private,omitempty" json:"is_private,omitempty"`
 
 	// Limit Number of results to return per page.
 	Limit *int `form:"limit,omitempty" json:"limit,omitempty"`
@@ -869,14 +869,14 @@ type FoldersListParams struct {
 	// Offset The initial index from which to return the results.
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
 
-	// Sort Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+	// Sort Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
 	Sort *FoldersListParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// SpaceId Filter by space code.
-	SpaceId *string `form:"spaceId,omitempty" json:"spaceId,omitempty"`
+	SpaceId *string `form:"space_id,omitempty" json:"space_id,omitempty"`
 
 	// UserId Filter by user code. Pass `null` to match items where this field is unset.
-	UserId *string `form:"userId,omitempty" json:"userId,omitempty"`
+	UserId *string `form:"user_id,omitempty" json:"user_id,omitempty"`
 }
 
 // FoldersListParamsSort defines parameters for FoldersList.
@@ -885,10 +885,10 @@ type FoldersListParamsSort string
 // GoalsListParams defines parameters for GoalsList.
 type GoalsListParams struct {
 	// AssigneeId Filter by assignee code. Pass `null` to match items where this field is unset.
-	AssigneeId *string `form:"assigneeId,omitempty" json:"assigneeId,omitempty"`
+	AssigneeId *string `form:"assignee_id,omitempty" json:"assignee_id,omitempty"`
 
 	// BucketId Filter by bucket code. Pass `null` to match items where this field is unset.
-	BucketId *string `form:"bucketId,omitempty" json:"bucketId,omitempty"`
+	BucketId *string `form:"bucket_id,omitempty" json:"bucket_id,omitempty"`
 
 	// Checked Accepts `true` or `false`.
 	Checked *bool `form:"checked,omitempty" json:"checked,omitempty"`
@@ -912,16 +912,16 @@ type GoalsListParams struct {
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
 
 	// ParentId Filter by parent code. Pass `null` to match items where this field is unset.
-	ParentId *string `form:"parentId,omitempty" json:"parentId,omitempty"`
+	ParentId *string `form:"parent_id,omitempty" json:"parent_id,omitempty"`
 
 	// Search Search query.
 	Search *string `form:"search,omitempty" json:"search,omitempty"`
 
-	// Sort Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+	// Sort Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
 	Sort *GoalsListParamsSort `form:"sort,omitempty" json:"sort,omitempty"`
 
 	// SpaceId Filter by space code.
-	SpaceId *string `form:"spaceId,omitempty" json:"spaceId,omitempty"`
+	SpaceId *string `form:"space_id,omitempty" json:"space_id,omitempty"`
 
 	// UpdatedSince Inclusive lower bound (>=) on modified_datetime. ISO 8601 datetime.
 	UpdatedSince *time.Time `form:"updated_since,omitempty" json:"updated_since,omitempty"`
@@ -950,10 +950,10 @@ type MembershipsListParams struct {
 	Offset *int `form:"offset,omitempty" json:"offset,omitempty"`
 
 	// SpaceId Filter by space code.
-	SpaceId *string `form:"spaceId,omitempty" json:"spaceId,omitempty"`
+	SpaceId *string `form:"space_id,omitempty" json:"space_id,omitempty"`
 
 	// UserId Filter by user code.
-	UserId *string `form:"userId,omitempty" json:"userId,omitempty"`
+	UserId *string `form:"user_id,omitempty" json:"user_id,omitempty"`
 }
 
 // SpacesListParams defines parameters for SpacesList.
@@ -2691,7 +2691,7 @@ func NewBoardsListRequest(server string, params *BoardsListParams) (*http.Reques
 
 		if params.SpaceId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "spaceId", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "space_id", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -2975,7 +2975,7 @@ func NewBucketsListRequest(server string, params *BucketsListParams) (*http.Requ
 
 		if params.BoardId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "boardId", runtime.ParamLocationQuery, *params.BoardId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "board_id", runtime.ParamLocationQuery, *params.BoardId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3323,7 +3323,7 @@ func NewCommentsListRequest(server string, params *CommentsListParams) (*http.Re
 
 		if params.CreatedFrom != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "createdFrom", runtime.ParamLocationQuery, *params.CreatedFrom); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "created_from", runtime.ParamLocationQuery, *params.CreatedFrom); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3339,7 +3339,7 @@ func NewCommentsListRequest(server string, params *CommentsListParams) (*http.Re
 
 		if params.CreatedTo != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "createdTo", runtime.ParamLocationQuery, *params.CreatedTo); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "created_to", runtime.ParamLocationQuery, *params.CreatedTo); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3355,7 +3355,7 @@ func NewCommentsListRequest(server string, params *CommentsListParams) (*http.Re
 
 		if params.GoalId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "goalId", runtime.ParamLocationQuery, *params.GoalId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "goal_id", runtime.ParamLocationQuery, *params.GoalId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3387,7 +3387,7 @@ func NewCommentsListRequest(server string, params *CommentsListParams) (*http.Re
 
 		if params.ModifiedFrom != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "modifiedFrom", runtime.ParamLocationQuery, *params.ModifiedFrom); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "modified_from", runtime.ParamLocationQuery, *params.ModifiedFrom); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3403,7 +3403,7 @@ func NewCommentsListRequest(server string, params *CommentsListParams) (*http.Re
 
 		if params.ModifiedTo != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "modifiedTo", runtime.ParamLocationQuery, *params.ModifiedTo); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "modified_to", runtime.ParamLocationQuery, *params.ModifiedTo); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3451,7 +3451,7 @@ func NewCommentsListRequest(server string, params *CommentsListParams) (*http.Re
 
 		if params.SpaceId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "spaceId", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "space_id", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3467,7 +3467,7 @@ func NewCommentsListRequest(server string, params *CommentsListParams) (*http.Re
 
 		if params.UserId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "userId", runtime.ParamLocationQuery, *params.UserId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "user_id", runtime.ParamLocationQuery, *params.UserId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3767,7 +3767,7 @@ func NewEventsListRequest(server string, params *EventsListParams) (*http.Reques
 
 		if params.GoalId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "goalId", runtime.ParamLocationQuery, *params.GoalId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "goal_id", runtime.ParamLocationQuery, *params.GoalId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3831,7 +3831,7 @@ func NewEventsListRequest(server string, params *EventsListParams) (*http.Reques
 
 		if params.SpaceId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "spaceId", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "space_id", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3879,7 +3879,7 @@ func NewEventsListRequest(server string, params *EventsListParams) (*http.Reques
 
 		if params.UserId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "userId", runtime.ParamLocationQuery, *params.UserId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "user_id", runtime.ParamLocationQuery, *params.UserId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3962,7 +3962,7 @@ func NewFolderGoalsListRequest(server string, params *FolderGoalsListParams) (*h
 
 		if params.FolderId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "folderId", runtime.ParamLocationQuery, *params.FolderId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "folder_id", runtime.ParamLocationQuery, *params.FolderId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -3978,7 +3978,7 @@ func NewFolderGoalsListRequest(server string, params *FolderGoalsListParams) (*h
 
 		if params.GoalId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "goalId", runtime.ParamLocationQuery, *params.GoalId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "goal_id", runtime.ParamLocationQuery, *params.GoalId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4310,7 +4310,7 @@ func NewFoldersListRequest(server string, params *FoldersListParams) (*http.Requ
 
 		if params.IsPrivate != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "isPrivate", runtime.ParamLocationQuery, *params.IsPrivate); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "is_private", runtime.ParamLocationQuery, *params.IsPrivate); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4374,7 +4374,7 @@ func NewFoldersListRequest(server string, params *FoldersListParams) (*http.Requ
 
 		if params.SpaceId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "spaceId", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "space_id", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4390,7 +4390,7 @@ func NewFoldersListRequest(server string, params *FoldersListParams) (*http.Requ
 
 		if params.UserId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "userId", runtime.ParamLocationQuery, *params.UserId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "user_id", runtime.ParamLocationQuery, *params.UserId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4674,7 +4674,7 @@ func NewGoalsListRequest(server string, params *GoalsListParams) (*http.Request,
 
 		if params.AssigneeId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "assigneeId", runtime.ParamLocationQuery, *params.AssigneeId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "assignee_id", runtime.ParamLocationQuery, *params.AssigneeId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4690,7 +4690,7 @@ func NewGoalsListRequest(server string, params *GoalsListParams) (*http.Request,
 
 		if params.BucketId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "bucketId", runtime.ParamLocationQuery, *params.BucketId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "bucket_id", runtime.ParamLocationQuery, *params.BucketId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4818,7 +4818,7 @@ func NewGoalsListRequest(server string, params *GoalsListParams) (*http.Request,
 
 		if params.ParentId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "parentId", runtime.ParamLocationQuery, *params.ParentId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "parent_id", runtime.ParamLocationQuery, *params.ParentId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -4866,7 +4866,7 @@ func NewGoalsListRequest(server string, params *GoalsListParams) (*http.Request,
 
 		if params.SpaceId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "spaceId", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "space_id", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -5234,7 +5234,7 @@ func NewMembershipsListRequest(server string, params *MembershipsListParams) (*h
 
 		if params.SpaceId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "spaceId", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "space_id", runtime.ParamLocationQuery, *params.SpaceId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err
@@ -5250,7 +5250,7 @@ func NewMembershipsListRequest(server string, params *MembershipsListParams) (*h
 
 		if params.UserId != nil {
 
-			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "userId", runtime.ParamLocationQuery, *params.UserId); err != nil {
+			if queryFrag, err := runtime.StyleParamWithLocation("form", true, "user_id", runtime.ParamLocationQuery, *params.UserId); err != nil {
 				return nil, err
 			} else if parsed, err := url.ParseQuery(queryFrag); err != nil {
 				return nil, err

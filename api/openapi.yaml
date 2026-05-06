@@ -11,7 +11,7 @@ info:
 paths:
   /boards/:
     get:
-      operationId: boardsList
+      operationId: boards_list
       parameters:
       - name: archived
         in: query
@@ -40,17 +40,17 @@ paths:
       - name: sort
         in: query
         required: false
-        description: Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+        description: Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
         schema:
           type: string
           enum:
           - archived
           - name
-          - sequenceNo
+          - sequence_no
           - -archived
           - -name
-          - -sequenceNo
-      - name: spaceId
+          - -sequence_no
+      - name: space_id
         in: query
         required: false
         description: Filter by space code.
@@ -69,18 +69,18 @@ paths:
                 $ref: '#/components/schemas/PaginatedBoardList'
           description: ''
     post:
-      operationId: boardsCreate
+      operationId: boards_create
       tags:
       - Boards
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Board'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Board'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Board'
-          application/json:
             schema:
               $ref: '#/components/schemas/Board'
         required: true
@@ -96,7 +96,7 @@ paths:
           description: ''
   /boards/{id}/:
     get:
-      operationId: boardsRetrieve
+      operationId: boards_retrieve
       parameters:
       - in: path
         name: id
@@ -116,7 +116,7 @@ paths:
                 $ref: '#/components/schemas/Board'
           description: ''
     put:
-      operationId: boardsUpdate
+      operationId: boards_update
       parameters:
       - in: path
         name: id
@@ -127,13 +127,13 @@ paths:
       - Boards
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Board'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Board'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Board'
-          application/json:
             schema:
               $ref: '#/components/schemas/Board'
         required: true
@@ -148,7 +148,7 @@ paths:
                 $ref: '#/components/schemas/Board'
           description: ''
     patch:
-      operationId: boardsPartialUpdate
+      operationId: boards_partial_update
       parameters:
       - in: path
         name: id
@@ -159,13 +159,13 @@ paths:
       - Boards
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBoard'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedBoard'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedBoard'
-          application/json:
             schema:
               $ref: '#/components/schemas/PatchedBoard'
       security:
@@ -179,7 +179,7 @@ paths:
                 $ref: '#/components/schemas/Board'
           description: ''
     delete:
-      operationId: boardsDestroy
+      operationId: boards_destroy
       parameters:
       - in: path
         name: id
@@ -196,9 +196,9 @@ paths:
           description: No response body
   /buckets/:
     get:
-      operationId: bucketsList
+      operationId: buckets_list
       parameters:
-      - name: boardId
+      - name: board_id
         in: query
         required: false
         description: Filter by board code.
@@ -225,16 +225,16 @@ paths:
       - name: sort
         in: query
         required: false
-        description: Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+        description: Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
         schema:
           type: string
           enum:
-          - createdDatetime
+          - created_datetime
           - name
-          - sequenceNo
-          - -createdDatetime
+          - sequence_no
+          - -created_datetime
           - -name
-          - -sequenceNo
+          - -sequence_no
       tags:
       - Buckets
       security:
@@ -248,18 +248,18 @@ paths:
                 $ref: '#/components/schemas/PaginatedBucketList'
           description: ''
     post:
-      operationId: bucketsCreate
+      operationId: buckets_create
       tags:
       - Buckets
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bucket'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Bucket'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Bucket'
-          application/json:
             schema:
               $ref: '#/components/schemas/Bucket'
         required: true
@@ -275,7 +275,7 @@ paths:
           description: ''
   /buckets/{id}/:
     get:
-      operationId: bucketsRetrieve
+      operationId: buckets_retrieve
       parameters:
       - in: path
         name: id
@@ -295,7 +295,7 @@ paths:
                 $ref: '#/components/schemas/Bucket'
           description: ''
     put:
-      operationId: bucketsUpdate
+      operationId: buckets_update
       parameters:
       - in: path
         name: id
@@ -306,13 +306,13 @@ paths:
       - Buckets
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bucket'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Bucket'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Bucket'
-          application/json:
             schema:
               $ref: '#/components/schemas/Bucket'
         required: true
@@ -327,7 +327,7 @@ paths:
                 $ref: '#/components/schemas/Bucket'
           description: ''
     patch:
-      operationId: bucketsPartialUpdate
+      operationId: buckets_partial_update
       parameters:
       - in: path
         name: id
@@ -338,13 +338,13 @@ paths:
       - Buckets
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBucket'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedBucket'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedBucket'
-          application/json:
             schema:
               $ref: '#/components/schemas/PatchedBucket'
       security:
@@ -358,7 +358,7 @@ paths:
                 $ref: '#/components/schemas/Bucket'
           description: ''
     delete:
-      operationId: bucketsDestroy
+      operationId: buckets_destroy
       parameters:
       - in: path
         name: id
@@ -375,23 +375,23 @@ paths:
           description: No response body
   /comments/:
     get:
-      operationId: commentsList
+      operationId: comments_list
       parameters:
-      - name: createdFrom
+      - name: created_from
         in: query
         required: false
         description: Inclusive lower bound (>=) on created_datetime. ISO 8601 datetime.
         schema:
           type: string
           format: date-time
-      - name: createdTo
+      - name: created_to
         in: query
         required: false
         description: Exclusive upper bound (<) on created_datetime. ISO 8601 datetime.
         schema:
           type: string
           format: date-time
-      - name: goalId
+      - name: goal_id
         in: query
         required: false
         description: Filter by goal code.
@@ -403,14 +403,14 @@ paths:
         description: Number of results to return per page.
         schema:
           type: integer
-      - name: modifiedFrom
+      - name: modified_from
         in: query
         required: false
         description: Inclusive lower bound (>=) on modified_datetime. ISO 8601 datetime.
         schema:
           type: string
           format: date-time
-      - name: modifiedTo
+      - name: modified_to
         in: query
         required: false
         description: Exclusive upper bound (<) on modified_datetime. ISO 8601 datetime.
@@ -426,21 +426,21 @@ paths:
       - name: sort
         in: query
         required: false
-        description: Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+        description: Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
         schema:
           type: string
           enum:
-          - createdDatetime
-          - modifiedDatetime
-          - -createdDatetime
-          - -modifiedDatetime
-      - name: spaceId
+          - created_datetime
+          - modified_datetime
+          - -created_datetime
+          - -modified_datetime
+      - name: space_id
         in: query
         required: false
         description: Filter by goal__space code.
         schema:
           type: string
-      - name: userId
+      - name: user_id
         in: query
         required: false
         description: Filter by user code.
@@ -459,18 +459,18 @@ paths:
                 $ref: '#/components/schemas/PaginatedCommentList'
           description: ''
     post:
-      operationId: commentsCreate
+      operationId: comments_create
       tags:
       - Comments
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Comment'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Comment'
-          application/json:
             schema:
               $ref: '#/components/schemas/Comment'
         required: true
@@ -486,7 +486,7 @@ paths:
           description: ''
   /comments/{id}/:
     get:
-      operationId: commentsRetrieve
+      operationId: comments_retrieve
       parameters:
       - in: path
         name: id
@@ -506,7 +506,7 @@ paths:
                 $ref: '#/components/schemas/Comment'
           description: ''
     put:
-      operationId: commentsUpdate
+      operationId: comments_update
       parameters:
       - in: path
         name: id
@@ -517,13 +517,13 @@ paths:
       - Comments
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Comment'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Comment'
-          application/json:
             schema:
               $ref: '#/components/schemas/Comment'
         required: true
@@ -538,7 +538,7 @@ paths:
                 $ref: '#/components/schemas/Comment'
           description: ''
     patch:
-      operationId: commentsPartialUpdate
+      operationId: comments_partial_update
       parameters:
       - in: path
         name: id
@@ -549,13 +549,13 @@ paths:
       - Comments
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedComment'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedComment'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedComment'
-          application/json:
             schema:
               $ref: '#/components/schemas/PatchedComment'
       security:
@@ -569,7 +569,7 @@ paths:
                 $ref: '#/components/schemas/Comment'
           description: ''
     delete:
-      operationId: commentsDestroy
+      operationId: comments_destroy
       parameters:
       - in: path
         name: id
@@ -586,7 +586,7 @@ paths:
           description: No response body
   /events/:
     get:
-      operationId: eventsList
+      operationId: events_list
       parameters:
       - name: from
         in: query
@@ -595,7 +595,7 @@ paths:
         schema:
           type: string
           format: date-time
-      - name: goalId
+      - name: goal_id
         in: query
         required: false
         description: Filter by goal code.
@@ -616,13 +616,13 @@ paths:
       - name: sort
         in: query
         required: false
-        description: Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+        description: Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
         schema:
           type: string
           enum:
           - datetime
           - -datetime
-      - name: spaceId
+      - name: space_id
         in: query
         required: false
         description: Filter by space code.
@@ -666,7 +666,7 @@ paths:
           - SPACE_CREATED_BY_CLONING
           - SPACE_USED_FOR_CLONING
           - USER_CREATED
-      - name: userId
+      - name: user_id
         in: query
         required: false
         description: Filter by user code.
@@ -686,7 +686,7 @@ paths:
           description: ''
   /events/{id}/:
     get:
-      operationId: eventsRetrieve
+      operationId: events_retrieve
       parameters:
       - in: path
         name: id
@@ -707,15 +707,15 @@ paths:
           description: ''
   /folder-goals/:
     get:
-      operationId: folderGoalsList
+      operationId: folder_goals_list
       parameters:
-      - name: folderId
+      - name: folder_id
         in: query
         required: false
         description: Filter by folder code.
         schema:
           type: string
-      - name: goalId
+      - name: goal_id
         in: query
         required: false
         description: Filter by goal code.
@@ -736,14 +736,14 @@ paths:
       - name: sort
         in: query
         required: false
-        description: Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+        description: Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
         schema:
           type: string
           enum:
-          - createdDatetime
-          - sequenceNo
-          - -createdDatetime
-          - -sequenceNo
+          - created_datetime
+          - sequence_no
+          - -created_datetime
+          - -sequence_no
       tags:
       - Folder-Goals
       security:
@@ -757,18 +757,18 @@ paths:
                 $ref: '#/components/schemas/PaginatedFolderGoalList'
           description: ''
     post:
-      operationId: folderGoalsCreate
+      operationId: folder_goals_create
       tags:
       - Folder-Goals
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FolderGoal'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/FolderGoal'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FolderGoal'
-          application/json:
             schema:
               $ref: '#/components/schemas/FolderGoal'
         required: true
@@ -784,7 +784,7 @@ paths:
           description: ''
   /folder-goals/{id}/:
     get:
-      operationId: folderGoalsRetrieve
+      operationId: folder_goals_retrieve
       parameters:
       - in: path
         name: id
@@ -804,7 +804,7 @@ paths:
                 $ref: '#/components/schemas/FolderGoal'
           description: ''
     put:
-      operationId: folderGoalsUpdate
+      operationId: folder_goals_update
       parameters:
       - in: path
         name: id
@@ -815,13 +815,13 @@ paths:
       - Folder-Goals
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FolderGoal'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/FolderGoal'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/FolderGoal'
-          application/json:
             schema:
               $ref: '#/components/schemas/FolderGoal'
         required: true
@@ -836,7 +836,7 @@ paths:
                 $ref: '#/components/schemas/FolderGoal'
           description: ''
     patch:
-      operationId: folderGoalsPartialUpdate
+      operationId: folder_goals_partial_update
       parameters:
       - in: path
         name: id
@@ -847,13 +847,13 @@ paths:
       - Folder-Goals
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFolderGoal'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedFolderGoal'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedFolderGoal'
-          application/json:
             schema:
               $ref: '#/components/schemas/PatchedFolderGoal'
       security:
@@ -867,7 +867,7 @@ paths:
                 $ref: '#/components/schemas/FolderGoal'
           description: ''
     delete:
-      operationId: folderGoalsDestroy
+      operationId: folder_goals_destroy
       parameters:
       - in: path
         name: id
@@ -884,9 +884,9 @@ paths:
           description: No response body
   /folders/:
     get:
-      operationId: foldersList
+      operationId: folders_list
       parameters:
-      - name: isPrivate
+      - name: is_private
         in: query
         required: false
         description: Filter by is_private. Accepts `true` or `false`.
@@ -907,23 +907,23 @@ paths:
       - name: sort
         in: query
         required: false
-        description: Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+        description: Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
         schema:
           type: string
           enum:
-          - createdDatetime
+          - created_datetime
           - name
-          - sequenceNo
-          - -createdDatetime
+          - sequence_no
+          - -created_datetime
           - -name
-          - -sequenceNo
-      - name: spaceId
+          - -sequence_no
+      - name: space_id
         in: query
         required: false
         description: Filter by space code.
         schema:
           type: string
-      - name: userId
+      - name: user_id
         in: query
         required: false
         description: Filter by user code. Pass `null` to match items where this field
@@ -943,18 +943,18 @@ paths:
                 $ref: '#/components/schemas/PaginatedFolderList'
           description: ''
     post:
-      operationId: foldersCreate
+      operationId: folders_create
       tags:
       - Folders
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Folder'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Folder'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Folder'
-          application/json:
             schema:
               $ref: '#/components/schemas/Folder'
         required: true
@@ -970,7 +970,7 @@ paths:
           description: ''
   /folders/{id}/:
     get:
-      operationId: foldersRetrieve
+      operationId: folders_retrieve
       parameters:
       - in: path
         name: id
@@ -990,7 +990,7 @@ paths:
                 $ref: '#/components/schemas/Folder'
           description: ''
     put:
-      operationId: foldersUpdate
+      operationId: folders_update
       parameters:
       - in: path
         name: id
@@ -1001,13 +1001,13 @@ paths:
       - Folders
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Folder'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Folder'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Folder'
-          application/json:
             schema:
               $ref: '#/components/schemas/Folder'
         required: true
@@ -1022,7 +1022,7 @@ paths:
                 $ref: '#/components/schemas/Folder'
           description: ''
     patch:
-      operationId: foldersPartialUpdate
+      operationId: folders_partial_update
       parameters:
       - in: path
         name: id
@@ -1033,13 +1033,13 @@ paths:
       - Folders
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFolder'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedFolder'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedFolder'
-          application/json:
             schema:
               $ref: '#/components/schemas/PatchedFolder'
       security:
@@ -1053,7 +1053,7 @@ paths:
                 $ref: '#/components/schemas/Folder'
           description: ''
     delete:
-      operationId: foldersDestroy
+      operationId: folders_destroy
       parameters:
       - in: path
         name: id
@@ -1070,16 +1070,16 @@ paths:
           description: No response body
   /goals/:
     get:
-      operationId: goalsList
+      operationId: goals_list
       parameters:
-      - name: assigneeId
+      - name: assignee_id
         in: query
         required: false
         description: Filter by assignee code. Pass `null` to match items where this
           field is unset.
         schema:
           type: string
-      - name: bucketId
+      - name: bucket_id
         in: query
         required: false
         description: Filter by bucket code. Pass `null` to match items where this
@@ -1149,7 +1149,7 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
-      - name: parentId
+      - name: parent_id
         in: query
         required: false
         description: Filter by parent code. Pass `null` to match items where this
@@ -1165,25 +1165,25 @@ paths:
       - name: sort
         in: query
         required: false
-        description: Sort order. Prefix with `-` for descending (e.g. `-createdDatetime`).
+        description: Sort order. Prefix with `-` for descending (e.g. `-created_datetime`).
         schema:
           type: string
           enum:
           - assignee
           - checked
-          - createdDatetime
+          - created_datetime
           - date
           - horizon
-          - modifiedDatetime
+          - modified_datetime
           - name
           - -assignee
           - -checked
-          - -createdDatetime
+          - -created_datetime
           - -date
           - -horizon
-          - -modifiedDatetime
+          - -modified_datetime
           - -name
-      - name: spaceId
+      - name: space_id
         in: query
         required: false
         description: Filter by space code.
@@ -1209,18 +1209,18 @@ paths:
                 $ref: '#/components/schemas/PaginatedGoalList'
           description: ''
     post:
-      operationId: goalsCreate
+      operationId: goals_create
       tags:
       - Goals
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Goal'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Goal'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Goal'
-          application/json:
             schema:
               $ref: '#/components/schemas/Goal'
         required: true
@@ -1236,7 +1236,7 @@ paths:
           description: ''
   /goals/{id}/:
     get:
-      operationId: goalsRetrieve
+      operationId: goals_retrieve
       parameters:
       - in: path
         name: id
@@ -1256,7 +1256,7 @@ paths:
                 $ref: '#/components/schemas/Goal'
           description: ''
     put:
-      operationId: goalsUpdate
+      operationId: goals_update
       parameters:
       - in: path
         name: id
@@ -1267,13 +1267,13 @@ paths:
       - Goals
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Goal'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Goal'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Goal'
-          application/json:
             schema:
               $ref: '#/components/schemas/Goal'
         required: true
@@ -1288,7 +1288,7 @@ paths:
                 $ref: '#/components/schemas/Goal'
           description: ''
     patch:
-      operationId: goalsPartialUpdate
+      operationId: goals_partial_update
       parameters:
       - in: path
         name: id
@@ -1299,13 +1299,13 @@ paths:
       - Goals
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGoal'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedGoal'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedGoal'
-          application/json:
             schema:
               $ref: '#/components/schemas/PatchedGoal'
       security:
@@ -1319,7 +1319,7 @@ paths:
                 $ref: '#/components/schemas/Goal'
           description: ''
     delete:
-      operationId: goalsDestroy
+      operationId: goals_destroy
       parameters:
       - in: path
         name: id
@@ -1336,7 +1336,7 @@ paths:
           description: No response body
   /goals/{id}/attachments/:
     post:
-      operationId: goalsAttachmentsCreate
+      operationId: goals_attachments_create
       description: Uploaded file is appended to the goal’s description as an inline
         image or link.
       parameters:
@@ -1366,7 +1366,7 @@ paths:
           description: Created
   /memberships/:
     get:
-      operationId: membershipsList
+      operationId: memberships_list
       parameters:
       - name: limit
         required: false
@@ -1380,13 +1380,13 @@ paths:
         description: The initial index from which to return the results.
         schema:
           type: integer
-      - name: spaceId
+      - name: space_id
         in: query
         required: false
         description: Filter by space code.
         schema:
           type: string
-      - name: userId
+      - name: user_id
         in: query
         required: false
         description: Filter by user code.
@@ -1406,7 +1406,7 @@ paths:
           description: ''
   /memberships/{id}/:
     get:
-      operationId: membershipsRetrieve
+      operationId: memberships_retrieve
       parameters:
       - in: path
         name: id
@@ -1427,7 +1427,7 @@ paths:
           description: ''
   /spaces/:
     get:
-      operationId: spacesList
+      operationId: spaces_list
       parameters:
       - name: limit
         required: false
@@ -1460,18 +1460,18 @@ paths:
                 $ref: '#/components/schemas/PaginatedSpaceList'
           description: ''
     post:
-      operationId: spacesCreate
+      operationId: spaces_create
       tags:
       - Spaces
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Space'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Space'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Space'
-          application/json:
             schema:
               $ref: '#/components/schemas/Space'
       security:
@@ -1486,7 +1486,7 @@ paths:
           description: ''
   /spaces/{id}/:
     get:
-      operationId: spacesRetrieve
+      operationId: spaces_retrieve
       parameters:
       - in: path
         name: id
@@ -1506,7 +1506,7 @@ paths:
                 $ref: '#/components/schemas/Space'
           description: ''
     put:
-      operationId: spacesUpdate
+      operationId: spaces_update
       parameters:
       - in: path
         name: id
@@ -1517,13 +1517,13 @@ paths:
       - Spaces
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Space'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/Space'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Space'
-          application/json:
             schema:
               $ref: '#/components/schemas/Space'
       security:
@@ -1537,7 +1537,7 @@ paths:
                 $ref: '#/components/schemas/Space'
           description: ''
     patch:
-      operationId: spacesPartialUpdate
+      operationId: spaces_partial_update
       parameters:
       - in: path
         name: id
@@ -1548,13 +1548,13 @@ paths:
       - Spaces
       requestBody:
         content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSpace'
           application/x-www-form-urlencoded:
             schema:
               $ref: '#/components/schemas/PatchedSpace'
           multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/PatchedSpace'
-          application/json:
             schema:
               $ref: '#/components/schemas/PatchedSpace'
       security:
@@ -1568,7 +1568,7 @@ paths:
                 $ref: '#/components/schemas/Space'
           description: ''
     delete:
-      operationId: spacesDestroy
+      operationId: spaces_destroy
       parameters:
       - in: path
         name: id
@@ -1585,7 +1585,7 @@ paths:
           description: No response body
   /users/:
     get:
-      operationId: usersList
+      operationId: users_list
       parameters:
       - name: email
         in: query
@@ -1625,7 +1625,7 @@ paths:
           description: ''
   /users/{id}/:
     get:
-      operationId: usersRetrieve
+      operationId: users_retrieve
       parameters:
       - in: path
         name: id
@@ -1646,7 +1646,7 @@ paths:
           description: ''
   /users/me/:
     get:
-      operationId: usersMeRetrieve
+      operationId: users_me_retrieve
       tags:
       - Users
       security:
@@ -1667,7 +1667,7 @@ components:
         id:
           type: string
           readOnly: true
-        spaceId:
+        space_id:
           type: string
         name:
           type: string
@@ -1690,13 +1690,13 @@ components:
             * `vertical` - vertical
           x-spec-enum-id: dcb38317a1dd75c9
           nullable: true
-        sequenceNo:
+        sequence_no:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
         archived:
           type: boolean
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -1704,9 +1704,9 @@ components:
           type: string
           readOnly: true
       required:
-      - createdDatetime
+      - created_datetime
       - id
-      - spaceId
+      - space_id
       - url
     Bucket:
       type: object
@@ -1714,7 +1714,7 @@ components:
         id:
           type: string
           readOnly: true
-        boardId:
+        board_id:
           type: string
         name:
           type: string
@@ -1722,15 +1722,15 @@ components:
         emoji:
           type: string
           maxLength: 10
-        showEmoji:
+        show_emoji:
           type: boolean
         expanded:
           type: boolean
-        sequenceNo:
+        sequence_no:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -1738,8 +1738,8 @@ components:
           type: string
           readOnly: true
       required:
-      - boardId
-      - createdDatetime
+      - board_id
+      - created_datetime
       - id
       - url
     Comment:
@@ -1748,19 +1748,19 @@ components:
         id:
           type: string
           readOnly: true
-        goalId:
+        goal_id:
           type: string
-        userId:
+        user_id:
           type: string
           readOnly: true
         description:
           type: string
           description: Markdown-formatted text.
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
-        modifiedDatetime:
+        modified_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -1768,13 +1768,13 @@ components:
           type: string
           readOnly: true
       required:
-      - createdDatetime
+      - created_datetime
       - description
-      - goalId
+      - goal_id
       - id
-      - modifiedDatetime
+      - modified_datetime
       - url
-      - userId
+      - user_id
     Event:
       type: object
       properties:
@@ -1838,118 +1838,118 @@ components:
             * `CLIMB_SUBSCRIPTION_CREATED` - Climb Subscription Created
             * `CLIMB_SUBSCRIPTION_DELETED` - Climb Subscription Deleted
           x-spec-enum-id: 164adb0c560f8c40
-        userId:
+        user_id:
           type: string
           readOnly: true
-        userName:
+        user_name:
           type: string
           nullable: true
           maxLength: 250
-        spaceId:
+        space_id:
           type: string
           readOnly: true
-        spaceName:
+        space_name:
           type: string
           nullable: true
           maxLength: 250
-        goalId:
+        goal_id:
           type: string
           readOnly: true
-        goalName:
+        goal_name:
           type: string
           readOnly: true
-        goalColor:
+        goal_color:
           type: string
           readOnly: true
-        otherUserId:
+        other_user_id:
           type: string
           readOnly: true
-        otherUserName:
+        other_user_name:
           type: string
           nullable: true
           maxLength: 250
-        commentId:
+        comment_id:
           type: string
           readOnly: true
-        boardId:
+        board_id:
           type: string
           readOnly: true
-        boardName:
+        board_name:
           type: string
           nullable: true
           maxLength: 250
-        bucketId:
+        bucket_id:
           type: string
           readOnly: true
-        bucketName:
+        bucket_name:
           type: string
           nullable: true
           maxLength: 250
       required:
-      - boardId
-      - bucketId
-      - commentId
+      - board_id
+      - bucket_id
+      - comment_id
       - datetime
-      - goalColor
-      - goalId
-      - goalName
+      - goal_color
+      - goal_id
+      - goal_name
       - id
-      - otherUserId
-      - spaceId
+      - other_user_id
+      - space_id
       - type
-      - userId
+      - user_id
     Folder:
       type: object
       properties:
         id:
           type: string
           readOnly: true
-        spaceId:
+        space_id:
           type: string
-        userId:
+        user_id:
           type: string
           readOnly: true
           nullable: true
         name:
           type: string
           maxLength: 250
-        sequenceNo:
+        sequence_no:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-        isPrivate:
+        is_private:
           type: boolean
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
       required:
-      - createdDatetime
+      - created_datetime
       - id
-      - spaceId
-      - userId
+      - space_id
+      - user_id
     FolderGoal:
       type: object
       properties:
         id:
           type: string
           readOnly: true
-        folderId:
+        folder_id:
           type: string
-        goalId:
+        goal_id:
           type: string
-        sequenceNo:
+        sequence_no:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
       required:
-      - createdDatetime
-      - folderId
-      - goalId
+      - created_datetime
+      - folder_id
+      - goal_id
       - id
     Goal:
       type: object
@@ -1957,15 +1957,15 @@ components:
         id:
           type: string
           readOnly: true
-        spaceId:
+        space_id:
           type: string
-        bucketId:
-          type: string
-          nullable: true
-        parentId:
+        bucket_id:
           type: string
           nullable: true
-        assigneeId:
+        parent_id:
+          type: string
+          nullable: true
+        assignee_id:
           type: string
           nullable: true
         horizon:
@@ -1994,12 +1994,12 @@ components:
           format: date
           nullable: true
           description: ISO 8601 date (YYYY-MM-DD).
-        startTime:
+        start_time:
           type: string
           format: time
           nullable: true
           description: Time in 24-hour HH:MM format.
-        endTime:
+        end_time:
           type: string
           format: time
           nullable: true
@@ -2031,7 +2031,7 @@ components:
           nullable: true
         checked:
           type: boolean
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -2039,9 +2039,9 @@ components:
           type: string
           readOnly: true
       required:
-      - createdDatetime
+      - created_datetime
       - id
-      - spaceId
+      - space_id
       - url
     MagicLink:
       type: object
@@ -2074,10 +2074,10 @@ components:
         id:
           type: string
           readOnly: true
-        spaceId:
+        space_id:
           type: string
           readOnly: true
-        userId:
+        user_id:
           type: string
           readOnly: true
         role:
@@ -2097,8 +2097,8 @@ components:
       required:
       - id
       - role
-      - spaceId
-      - userId
+      - space_id
+      - user_id
     PaginatedBoardList:
       type: object
       required:
@@ -2335,7 +2335,7 @@ components:
         id:
           type: string
           readOnly: true
-        spaceId:
+        space_id:
           type: string
         name:
           type: string
@@ -2358,13 +2358,13 @@ components:
             * `vertical` - vertical
           x-spec-enum-id: dcb38317a1dd75c9
           nullable: true
-        sequenceNo:
+        sequence_no:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
         archived:
           type: boolean
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -2377,7 +2377,7 @@ components:
         id:
           type: string
           readOnly: true
-        boardId:
+        board_id:
           type: string
         name:
           type: string
@@ -2385,15 +2385,15 @@ components:
         emoji:
           type: string
           maxLength: 10
-        showEmoji:
+        show_emoji:
           type: boolean
         expanded:
           type: boolean
-        sequenceNo:
+        sequence_no:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -2406,19 +2406,19 @@ components:
         id:
           type: string
           readOnly: true
-        goalId:
+        goal_id:
           type: string
-        userId:
+        user_id:
           type: string
           readOnly: true
         description:
           type: string
           description: Markdown-formatted text.
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
-        modifiedDatetime:
+        modified_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -2431,22 +2431,22 @@ components:
         id:
           type: string
           readOnly: true
-        spaceId:
+        space_id:
           type: string
-        userId:
+        user_id:
           type: string
           readOnly: true
           nullable: true
         name:
           type: string
           maxLength: 250
-        sequenceNo:
+        sequence_no:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-        isPrivate:
+        is_private:
           type: boolean
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -2456,15 +2456,15 @@ components:
         id:
           type: string
           readOnly: true
-        folderId:
+        folder_id:
           type: string
-        goalId:
+        goal_id:
           type: string
-        sequenceNo:
+        sequence_no:
           type: integer
           maximum: 2147483647
           minimum: -2147483648
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -2474,15 +2474,15 @@ components:
         id:
           type: string
           readOnly: true
-        spaceId:
+        space_id:
           type: string
-        bucketId:
-          type: string
-          nullable: true
-        parentId:
+        bucket_id:
           type: string
           nullable: true
-        assigneeId:
+        parent_id:
+          type: string
+          nullable: true
+        assignee_id:
           type: string
           nullable: true
         horizon:
@@ -2511,12 +2511,12 @@ components:
           format: date
           nullable: true
           description: ISO 8601 date (YYYY-MM-DD).
-        startTime:
+        start_time:
           type: string
           format: time
           nullable: true
           description: Time in 24-hour HH:MM format.
-        endTime:
+        end_time:
           type: string
           format: time
           nullable: true
@@ -2548,7 +2548,7 @@ components:
           nullable: true
         checked:
           type: boolean
-        createdDatetime:
+        created_datetime:
           type: string
           format: date-time
           readOnly: true
@@ -2567,7 +2567,7 @@ components:
         image:
           type: string
           readOnly: true
-        magicLinks:
+        magic_links:
           type: array
           items:
             $ref: '#/components/schemas/MagicLink'
@@ -2587,7 +2587,7 @@ components:
         image:
           type: string
           readOnly: true
-        magicLinks:
+        magic_links:
           type: array
           items:
             $ref: '#/components/schemas/MagicLink'
@@ -2598,7 +2598,7 @@ components:
       required:
       - id
       - image
-      - magicLinks
+      - magic_links
       - url
     User:
       type: object
@@ -2609,10 +2609,10 @@ components:
         email:
           type: string
           readOnly: true
-        firstName:
+        first_name:
           type: string
           readOnly: true
-        lastName:
+        last_name:
           type: string
           readOnly: true
         image:
@@ -2628,10 +2628,10 @@ components:
           readOnly: true
       required:
       - email
-      - firstName
+      - first_name
       - id
       - image
-      - lastName
+      - last_name
       - timezone
       - url
   securitySchemes:

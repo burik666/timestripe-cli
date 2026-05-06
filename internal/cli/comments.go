@@ -93,11 +93,11 @@ func newCommentsListCmd() *cobra.Command {
 	cmd.Flags().StringVar(&goalID, "goal-id", "", "filter by goal ID")
 	cmd.Flags().StringVar(&spaceID, "space-id", "", "filter by space ID (via the comment's goal)")
 	cmd.Flags().StringVar(&userID, "user-id", "", "filter by author user ID")
-	cmd.Flags().StringVar(&createdFrom, "created-from", "", "inclusive lower bound on createdDatetime (YYYY-MM-DD or RFC3339)")
-	cmd.Flags().StringVar(&createdTo, "created-to", "", "exclusive upper bound on createdDatetime (YYYY-MM-DD or RFC3339)")
-	cmd.Flags().StringVar(&modifiedFrom, "modified-from", "", "inclusive lower bound on modifiedDatetime (YYYY-MM-DD or RFC3339)")
-	cmd.Flags().StringVar(&modifiedTo, "modified-to", "", "exclusive upper bound on modifiedDatetime (YYYY-MM-DD or RFC3339)")
-	cmd.Flags().StringVar(&sortFlag, "sort", "", "sort order; prefix with - for descending (e.g. -modifiedDatetime)")
+	cmd.Flags().StringVar(&createdFrom, "created-from", "", "inclusive lower bound on created_datetime (YYYY-MM-DD or RFC3339)")
+	cmd.Flags().StringVar(&createdTo, "created-to", "", "exclusive upper bound on created_datetime (YYYY-MM-DD or RFC3339)")
+	cmd.Flags().StringVar(&modifiedFrom, "modified-from", "", "inclusive lower bound on modified_datetime (YYYY-MM-DD or RFC3339)")
+	cmd.Flags().StringVar(&modifiedTo, "modified-to", "", "exclusive upper bound on modified_datetime (YYYY-MM-DD or RFC3339)")
+	cmd.Flags().StringVar(&sortFlag, "sort", "", "sort order; prefix with - for descending (e.g. -modified_datetime)")
 	return cmd
 }
 
@@ -144,7 +144,7 @@ func (f *commentFields) build(cmd *cobra.Command, client *api.ClientWithResponse
 		if err != nil {
 			return nil, err
 		}
-		body["goalId"] = id
+		body["goal_id"] = id
 	}
 	return body, nil
 }

@@ -120,8 +120,8 @@ func newGoalsListCmd() *cobra.Command {
 	cmd.Flags().StringSliceVar(&horizon, "horizon", nil, "filter by horizon (repeat for OR): day|week|month|quarter|year|decade|life")
 	cmd.Flags().StringVar(&dateFrom, "date-from", "", "inclusive lower bound on due date (YYYY-MM-DD)")
 	cmd.Flags().StringVar(&dateTo, "date-to", "", "inclusive upper bound on due date (YYYY-MM-DD)")
-	cmd.Flags().StringVar(&updatedSince, "updated-since", "", "inclusive lower bound on modifiedDatetime (RFC3339)")
-	cmd.Flags().StringVar(&sort, "sort", "", "sort order; prefix with - for descending (e.g. -modifiedDatetime)")
+	cmd.Flags().StringVar(&updatedSince, "updated-since", "", "inclusive lower bound on modified_datetime (RFC3339)")
+	cmd.Flags().StringVar(&sort, "sort", "", "sort order; prefix with - for descending (e.g. -modified_datetime)")
 	return cmd
 }
 
@@ -180,36 +180,36 @@ func (f *goalFields) build(cmd *cobra.Command, client *api.ClientWithResponses) 
 	ifChanged(cmd, "horizon", "horizon", f.horizon, body)
 	ifChanged(cmd, "color", "color", f.color, body)
 	ifChanged(cmd, "date", "date", f.date, body)
-	ifChanged(cmd, "start-time", "startTime", f.startTime, body)
-	ifChanged(cmd, "end-time", "endTime", f.endTime, body)
+	ifChanged(cmd, "start-time", "start_time", f.startTime, body)
+	ifChanged(cmd, "end-time", "end_time", f.endTime, body)
 	ifChanged(cmd, "checked", "checked", f.checked, body)
 	if cmd.Flags().Changed("space") {
 		id, err := resolveSpaceRef(cmd.Context(), client, f.spaceRef)
 		if err != nil {
 			return nil, err
 		}
-		body["spaceId"] = id
+		body["space_id"] = id
 	}
 	if cmd.Flags().Changed("bucket") {
 		id, err := resolveBucketRef(cmd.Context(), client, f.bucketRef)
 		if err != nil {
 			return nil, err
 		}
-		body["bucketId"] = id
+		body["bucket_id"] = id
 	}
 	if cmd.Flags().Changed("assignee") {
 		id, err := resolveUserRef(cmd.Context(), client, f.assigneeRef)
 		if err != nil {
 			return nil, err
 		}
-		body["assigneeId"] = id
+		body["assignee_id"] = id
 	}
 	if cmd.Flags().Changed("parent") {
 		id, err := resolveGoalRef(cmd.Context(), client, f.parentRef)
 		if err != nil {
 			return nil, err
 		}
-		body["parentId"] = id
+		body["parent_id"] = id
 	}
 	return body, nil
 }

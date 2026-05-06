@@ -149,7 +149,7 @@ with `jq` — they are cheaper and correct across all pages.
 Nullable foreign-key filters (`--assignee-id`, `--bucket-id`, `--parent-id`)
 accept the literal string `null` to match items where that field is unset.
 `--sort` accepts the API field name; prefix with `-` for descending, e.g.
-`--sort -modifiedDatetime`. Dates are `YYYY-MM-DD`; `--updated-since` is RFC3339.
+`--sort -modified_datetime`. Dates are `YYYY-MM-DD`; `--updated-since` is RFC3339.
 
 ## Create and update
 
@@ -160,7 +160,7 @@ accept the literal string `null` to match items where that field is unset.
 timestripe goals create --file ./new-goal.json
 
 # From stdin
-echo '{"spaceId":"...","name":"Ship v1","horizon":"week"}' | \
+echo '{"space_id":"...","name":"Ship v1","horizon":"week"}' | \
   timestripe goals create --file -
 ```
 
@@ -169,17 +169,17 @@ echo '{"spaceId":"...","name":"Ship v1","horizon":"week"}' | \
 ## Data model cheatsheet
 
 - **Space** — top-level container.
-- **Board** — belongs to a space (`spaceId`), optional `layout`. `description`
+- **Board** — belongs to a space (`space_id`), optional `layout`. `description`
   is Markdown.
-- **Bucket** — belongs to a board (`boardId`), ordered via `sequenceNo`.
+- **Bucket** — belongs to a board (`board_id`), ordered via `sequence_no`.
 - **Goal** (also addressable as `tasks`, `todos`, or `items` — the exact
-  semantics are up to the user) — belongs to a space (`spaceId`) and
-  optionally a bucket (`bucketId`). Has a `horizon` of `day | week | month |
+  semantics are up to the user) — belongs to a space (`space_id`) and
+  optionally a bucket (`bucket_id`). Has a `horizon` of `day | week | month |
   quarter | year | decade | life`, an optional `date` (ISO `YYYY-MM-DD`), a
   `checked` boolean, and a `color` from a fixed palette. `description` is
   Markdown.
-- **Comment** — Markdown text attached to a goal. Has `goalId`, `description`
-  (Markdown), `userId` (author, set by the server), and create/modify
+- **Comment** — Markdown text attached to a goal. Has `goal_id`, `description`
+  (Markdown), `user_id` (author, set by the server), and create/modify
   timestamps.
 - **Event** — server-emitted activity record. Read-only. `type` is one of
   `GOAL_CREATED | GOAL_DELETED | GOAL_DONE | GOAL_MODIFIED | GOAL_ASSIGNED |
@@ -189,12 +189,12 @@ echo '{"spaceId":"...","name":"Ship v1","horizon":"week"}' | \
   MEMBERSHIP_DELETED | BOARD_CREATED | BOARD_MODIFIED | BOARD_DELETED |
   BUCKET_CREATED | BUCKET_MODIFIED | BUCKET_DELETED |
   CLIMB_SUBSCRIPTION_CREATED | CLIMB_SUBSCRIPTION_DELETED`. Carries the
-  acting `userId` and any related `goalId` / `boardId` / `bucketId` /
-  `commentId` / `spaceId` / `otherUserId` plus their denormalized names.
-- **Folder** — a per-user grouping of goals inside a space. Has `spaceId`,
-  `name`, `sequenceNo`, `isPrivate`, and a nullable `userId` (null = shared).
+  acting `user_id` and any related `goal_id` / `board_id` / `bucket_id` /
+  `comment_id` / `space_id` / `other_user_id` plus their denormalized names.
+- **Folder** — a per-user grouping of goals inside a space. Has `space_id`,
+  `name`, `sequence_no`, `is_private`, and a nullable `user_id` (null = shared).
 - **FolderGoal** — pivot row that places a goal into a folder with a
-  `sequenceNo`. Manage via `timestripe folders goals add | remove | update`.
+  `sequence_no`. Manage via `timestripe folders goals add | remove | update`.
 - **Membership** — links a user to a space with a `role` of
   `OWNER | ADMIN | EDITOR | VIEWER`.
 
@@ -225,7 +225,7 @@ timestripe goals list --checked=false --date-from 2026-04-01 --date-to 2026-04-3
 # Create a goal from a heredoc
 cat <<'EOF' | timestripe goals create --file -
 {
-  "spaceId": "spc_abc",
+  "space_id": "spc_abc",
   "name": "Draft the Q3 plan",
   "horizon": "week",
   "date": "2026-04-27"
