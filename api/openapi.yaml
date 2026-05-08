@@ -584,6 +584,36 @@ paths:
       responses:
         '204':
           description: No response body
+  /comments/{id}/attachments/:
+    post:
+      operationId: comments_attachments_create
+      description: Uploaded file is appended to the comment’s description as an inline
+        image or link.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+        required: true
+      tags:
+      - Comments
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+              required:
+              - file
+      security:
+      - API Key: []
+      - OAuth2: []
+      responses:
+        '201':
+          description: Created
   /events/:
     get:
       operationId: events_list

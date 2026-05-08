@@ -104,6 +104,7 @@ timestripe goals        list | get <id> | create | update <id> | delete <id>
                         (aliases: tasks, todos, items — the resource's
                          semantics are up to the user)
 timestripe comments     list | get <id> | create | update <id> | delete <id>
+                        | attach <id> <file>
 timestripe events       list | get <id>                     (read-only)
 timestripe folders      list | get <id> | create | update <id> | delete <id>
                         | goals list | goals get <id>

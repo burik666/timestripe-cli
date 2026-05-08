@@ -801,6 +801,11 @@ type CommentsListParams struct {
 // CommentsListParamsSort defines parameters for CommentsList.
 type CommentsListParamsSort string
 
+// CommentsAttachmentsCreateMultipartBody defines parameters for CommentsAttachmentsCreate.
+type CommentsAttachmentsCreateMultipartBody struct {
+	File openapi_types.File `json:"file"`
+}
+
 // EventsListParams defines parameters for EventsList.
 type EventsListParams struct {
 	// From Inclusive lower bound (>=) on datetime. ISO 8601 datetime.
@@ -1063,6 +1068,9 @@ type CommentsUpdateFormdataRequestBody = Comment
 
 // CommentsUpdateMultipartRequestBody defines body for CommentsUpdate for multipart/form-data ContentType.
 type CommentsUpdateMultipartRequestBody = Comment
+
+// CommentsAttachmentsCreateMultipartRequestBody defines body for CommentsAttachmentsCreate for multipart/form-data ContentType.
+type CommentsAttachmentsCreateMultipartRequestBody CommentsAttachmentsCreateMultipartBody
 
 // FolderGoalsCreateJSONRequestBody defines body for FolderGoalsCreate for application/json ContentType.
 type FolderGoalsCreateJSONRequestBody = FolderGoal
@@ -1337,6 +1345,9 @@ type ClientInterface interface {
 	CommentsUpdate(ctx context.Context, id string, body CommentsUpdateJSONRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	CommentsUpdateWithFormdataBody(ctx context.Context, id string, body CommentsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error)
+
+	// CommentsAttachmentsCreateWithBody request with any body
+	CommentsAttachmentsCreateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error)
 
 	// EventsList request
 	EventsList(ctx context.Context, params *EventsListParams, reqEditors ...RequestEditorFn) (*http.Response, error)
@@ -1905,6 +1916,18 @@ func (c *Client) CommentsUpdate(ctx context.Context, id string, body CommentsUpd
 
 func (c *Client) CommentsUpdateWithFormdataBody(ctx context.Context, id string, body CommentsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*http.Response, error) {
 	req, err := NewCommentsUpdateRequestWithFormdataBody(c.Server, id, body)
+	if err != nil {
+		return nil, err
+	}
+	req = req.WithContext(ctx)
+	if err := c.applyEditors(ctx, req, reqEditors); err != nil {
+		return nil, err
+	}
+	return c.Client.Do(req)
+}
+
+func (c *Client) CommentsAttachmentsCreateWithBody(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*http.Response, error) {
+	req, err := NewCommentsAttachmentsCreateRequestWithBody(c.Server, id, contentType, body)
 	if err != nil {
 		return nil, err
 	}
@@ -3718,6 +3741,42 @@ func NewCommentsUpdateRequestWithBody(server string, id string, contentType stri
 	}
 
 	req, err := http.NewRequest("PUT", queryURL.String(), body)
+	if err != nil {
+		return nil, err
+	}
+
+	req.Header.Add("Content-Type", contentType)
+
+	return req, nil
+}
+
+// NewCommentsAttachmentsCreateRequestWithBody generates requests for CommentsAttachmentsCreate with any type of body
+func NewCommentsAttachmentsCreateRequestWithBody(server string, id string, contentType string, body io.Reader) (*http.Request, error) {
+	var err error
+
+	var pathParam0 string
+
+	pathParam0, err = runtime.StyleParamWithLocation("simple", false, "id", runtime.ParamLocationPath, id)
+	if err != nil {
+		return nil, err
+	}
+
+	serverURL, err := url.Parse(server)
+	if err != nil {
+		return nil, err
+	}
+
+	operationPath := fmt.Sprintf("/comments/%s/attachments/", pathParam0)
+	if operationPath[0] == '/' {
+		operationPath = "." + operationPath
+	}
+
+	queryURL, err := serverURL.Parse(operationPath)
+	if err != nil {
+		return nil, err
+	}
+
+	req, err := http.NewRequest("POST", queryURL.String(), body)
 	if err != nil {
 		return nil, err
 	}
@@ -5916,6 +5975,9 @@ type ClientWithResponsesInterface interface {
 
 	CommentsUpdateWithFormdataBodyWithResponse(ctx context.Context, id string, body CommentsUpdateFormdataRequestBody, reqEditors ...RequestEditorFn) (*CommentsUpdateResponse, error)
 
+	// CommentsAttachmentsCreateWithBodyWithResponse request with any body
+	CommentsAttachmentsCreateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CommentsAttachmentsCreateResponse, error)
+
 	// EventsListWithResponse request
 	EventsListWithResponse(ctx context.Context, params *EventsListParams, reqEditors ...RequestEditorFn) (*EventsListResponse, error)
 
@@ -6448,6 +6510,27 @@ func (r CommentsUpdateResponse) Status() string {
 
 // StatusCode returns HTTPResponse.StatusCode
 func (r CommentsUpdateResponse) StatusCode() int {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.StatusCode
+	}
+	return 0
+}
+
+type CommentsAttachmentsCreateResponse struct {
+	Body         []byte
+	HTTPResponse *http.Response
+}
+
+// Status returns HTTPResponse.Status
+func (r CommentsAttachmentsCreateResponse) Status() string {
+	if r.HTTPResponse != nil {
+		return r.HTTPResponse.Status
+	}
+	return http.StatusText(0)
+}
+
+// StatusCode returns HTTPResponse.StatusCode
+func (r CommentsAttachmentsCreateResponse) StatusCode() int {
 	if r.HTTPResponse != nil {
 		return r.HTTPResponse.StatusCode
 	}
@@ -7459,6 +7542,15 @@ func (c *ClientWithResponses) CommentsUpdateWithFormdataBodyWithResponse(ctx con
 	return ParseCommentsUpdateResponse(rsp)
 }
 
+// CommentsAttachmentsCreateWithBodyWithResponse request with arbitrary body returning *CommentsAttachmentsCreateResponse
+func (c *ClientWithResponses) CommentsAttachmentsCreateWithBodyWithResponse(ctx context.Context, id string, contentType string, body io.Reader, reqEditors ...RequestEditorFn) (*CommentsAttachmentsCreateResponse, error) {
+	rsp, err := c.CommentsAttachmentsCreateWithBody(ctx, id, contentType, body, reqEditors...)
+	if err != nil {
+		return nil, err
+	}
+	return ParseCommentsAttachmentsCreateResponse(rsp)
+}
+
 // EventsListWithResponse request returning *EventsListResponse
 func (c *ClientWithResponses) EventsListWithResponse(ctx context.Context, params *EventsListParams, reqEditors ...RequestEditorFn) (*EventsListResponse, error) {
 	rsp, err := c.EventsList(ctx, params, reqEditors...)
@@ -8372,6 +8464,22 @@ func ParseCommentsUpdateResponse(rsp *http.Response) (*CommentsUpdateResponse, e
 		}
 		response.JSON200 = &dest
 
+	}
+
+	return response, nil
+}
+
+// ParseCommentsAttachmentsCreateResponse parses an HTTP response from a CommentsAttachmentsCreateWithResponse call
+func ParseCommentsAttachmentsCreateResponse(rsp *http.Response) (*CommentsAttachmentsCreateResponse, error) {
+	bodyBytes, err := io.ReadAll(rsp.Body)
+	defer func() { _ = rsp.Body.Close() }()
+	if err != nil {
+		return nil, err
+	}
+
+	response := &CommentsAttachmentsCreateResponse{
+		Body:         bodyBytes,
+		HTTPResponse: rsp,
 	}
 
 	return response, nil
